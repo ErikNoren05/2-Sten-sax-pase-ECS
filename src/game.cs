@@ -150,4 +150,5 @@ public class WinnerSystem
 			return "japp, du förlorade";
 		}
 	}
-}s
+}
+
