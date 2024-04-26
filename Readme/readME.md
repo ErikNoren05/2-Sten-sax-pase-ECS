@@ -7,9 +7,7 @@ This project implements a simple console-based Rock, Paper, Scissors game in C#.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
 
 ## Installation
 
