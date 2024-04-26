@@ -5,11 +5,11 @@ This project implements a simple console-based Rock, Paper, Scissors game in C#.
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
+- [Contributing](#Contributing)
 - [Features](#features)
 - [License](#license)
 - [Acknowledgments](#Acknowledgments)
-- 
+
 ## Installation
 
 To play the game locally, follow these steps:
