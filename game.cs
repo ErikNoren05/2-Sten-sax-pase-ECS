@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
+//comment
 class Game
 {
 	static void Main(string[] args)
