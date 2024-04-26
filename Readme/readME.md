@@ -15,22 +15,6 @@ This project implements a simple console-based Rock, Paper, Scissors game in C#.
 
 To play the game locally, follow these steps:
 
-```bash
-git clone https://github.com/yourusername/rock-paper-scissors.git
-cd rock-paper-scissors
-# Compile the C# code using a C# compiler.
-# Run the compiled executable file.
-
-## Usage
-To play the game, follow the on-screen instructions to select your choice (rock, paper, or scissors) when prompted. After you make your choice, the game will reveal the opponent's choice and determine the winner. You can choose to play another round after each game.
-
-### Advanced Usage
-No advanced usage instructions are available for this simple console game.
-
-## Features
-- Player vs. AI gameplay.
-- Simple and intuitive user interface.
-- Determination of game winner based on choices made by the player and AI opponent.
 
 ## Contributing
 Contributions to this project are welcome. If you'd like to contribute, follow these steps:
@@ -40,14 +24,9 @@ Contributions to this project are welcome. If you'd like to contribute, follow t
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a Pull Request.
 
+
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## Contact
-Your Name - [@your_twitter](https://twitter.com/your_twitter)
-Project Link: [https://github.com/yourusername/rock-paper-scissors](https://github.com/yourusername/rock-paper-scissors)
-
 ## Acknowledgments
 - Inspired by the classic game of rock, paper, scissors.
-- This project was created as part of a C# programming course.
-```
