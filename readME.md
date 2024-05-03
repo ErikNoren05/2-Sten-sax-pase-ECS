@@ -66,7 +66,7 @@ Here's an example of how to use the code:
 // Example interaction:
 // > ja
 // Game Loop continues
-// ...
+```
 
 
 
