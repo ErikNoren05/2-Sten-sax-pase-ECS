@@ -1,7 +1,7 @@
 using System;
 using Systems;
-using components;
-using entities;
+using Components;
+using Entities;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
@@ -63,102 +63,3 @@ class Game
         }
     }
 }
-
-/// <summary>
-/// Represents a choice component for the game entities.
-/// </summary>
-public class ChoiceComponent
-{
-    public string PlayerChoice { get; set; }
-    public string OpponentChoice { get; set; }
-    public string[] Choices = { "rock", "paper", "scissors" };
-}
-
-/// <summary>
-/// Represents an entity in the game.
-/// </summary>
-public class Entity
-{
-    public int Id { get; }
-    private Dictionary<Type, object> components = new Dictionary<Type, object>();
-
-    public Entity(int id)
-    {
-        this.Id = id;
-    }
-
-    public void AddComponent<T>(T component)
-    {
-        components[typeof(T)] = component;
-    }
-
-    public T GetComponent<T>() where T : class
-    {
-        if (components.TryGetValue(typeof(T), out var component))
-        {
-            return component as T;
-        }
-        return null;
-    }
-}
-
-/// <summary>
-/// Represents the game system for handling player input.
-/// </summary>
-public class GameSystem
-{
-    public void Input(Entity entity, string input)
-    {
-        var choiceComponent = entity.GetComponent<ChoiceComponent>();
-        if (choiceComponent != null)
-        {
-            // Prompt user and get input
-            Console.WriteLine("Choose rock, paper, or scissors:");
-            input = Console.ReadLine().ToLower();
-
-            // Check if input is valid
-            if (input != "rock" && input != "paper" && input != "scissors")
-            {
-                // If input is not valid
-                Console.WriteLine("Invalid choice");
-                choiceComponent.PlayerChoice = "disqualified";
-            }
-            else
-            {
-                // Save input to player choice in choice component
-                choiceComponent.PlayerChoice = input;
-            }
-        }
-    }
-}
-
-/// <summary>
-/// Represents the winner system for determining the game winner.
-/// </summary>
-public class WinnerSystem
-{
-    /// <summary>
-    /// Determines the winner based on player and opponent choices.
-    /// </summary>
-    /// <param name="playerChoice">Player's choice component.</param>
-    /// <param name="opponentChoice">Opponent's choice component.</param>
-    /// <returns>Message indicating the winner.</returns>
-    public string GetWinner(ChoiceComponent playerChoice, ChoiceComponent opponentChoice)
-    {
-        if (playerChoice.PlayerChoice == opponentChoice.OpponentChoice)
-        {
-            return "It's a tie, how boring!";
-        }
-        else if ((playerChoice.PlayerChoice == "rock" && opponentChoice.OpponentChoice == "scissors") ||
-                 (playerChoice.PlayerChoice == "scissors" && opponentChoice.OpponentChoice == "paper") ||
-                 (playerChoice.PlayerChoice == "paper" && opponentChoice.OpponentChoice == "rock"))
-        {
-            return "Congratulations, you won!";
-        }
-        else
-        {
-            return "Sorry, you lost.";
-        }
-    }
-}
-
