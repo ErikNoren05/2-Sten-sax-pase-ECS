@@ -1,154 +1,162 @@
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
-//comment
+/// <summary>
+/// Represents a simple game of rock-paper-scissors.
+/// </summary>
 class Game
 {
-	static void Main(string[] args)
-	{
-		while (true)
-		{
-			//skapar spelare
-			Entity player = new Entity(1);
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            // Create player entity
+            Entity player = new Entity(1);
 
-			//skapar ai
-			Entity opponent = new Entity(2);
+            // Create AI opponent entity
+            Entity opponent = new Entity(2);
 
-			choiceComponent playerChoiceComponent = new choiceComponent();
-			choiceComponent opponentChoiceComponent = new choiceComponent();
+            // Initialize choice components for player and opponent
+            ChoiceComponent playerChoiceComponent = new ChoiceComponent();
+            ChoiceComponent opponentChoiceComponent = new ChoiceComponent();
 
-			player.addComponent(playerChoiceComponent);
-			opponent.addComponent(opponentChoiceComponent);
+            // Add choice components to entities
+            player.AddComponent(playerChoiceComponent);
+            opponent.AddComponent(opponentChoiceComponent);
 
+            // Initialize game system and winner system
+            GameSystem game = new GameSystem();
+            WinnerSystem winner = new WinnerSystem();
 
-			gameSystem game = new gameSystem();
-			WinnerSystem winner = new WinnerSystem();
+            // Start the game
+            game.Input(player, "");
 
-			//startar spelet
-			game.Input(player, "");
+            // Randomize opponent's choice
+            ChoiceComponent opponentChoice = opponent.GetComponent<ChoiceComponent>();
+            Random random = new Random();
+            int index = random.Next(opponentChoice.Choices.Length);
+            opponentChoice.OpponentChoice = opponentChoice.Choices[index];
 
-			//slumpa motståndarens val, buggar mycket om det är system
-			choiceComponent opponentChoice = opponent.getComponent<choiceComponent>();
-			Random random = new Random();
-			int index = random.Next(opponentChoice.choices.Length);
+            // Get player's choice
+            ChoiceComponent playerChoice = player.GetComponent<ChoiceComponent>();
 
-			//Får motståndarens val
-			opponentChoice.opponentChoice = opponentChoice.choices[index];
+            // Print out choices
+            Console.WriteLine("Player's choice: " + playerChoice.PlayerChoice);
+            Console.WriteLine("Opponent's choice: " + opponentChoice.OpponentChoice);
 
-			//får spelarens val
-			choiceComponent playerChoice = player.getComponent<choiceComponent>();
+            // Determine the winner and print the result
+            string winnerMessage = winner.GetWinner(playerChoice, opponentChoice);
+            Console.WriteLine(winnerMessage);
 
-			//simpel kod för att skriva ut val
-			Console.WriteLine("spelarens val: " + playerChoice.playerChoice);
-			Console.WriteLine("motståndarens val: " + opponentChoice.opponentChoice);
-
-			//hämtar vinnaren och skriver ut vinnaren 
-			string vinnaren = winner.getWinner(playerChoice, opponentChoice);
-			Console.WriteLine(vinnaren);
-
-			//simpel loop för att 
-			Console.WriteLine("\nVill du spela en runda till? ja/nej");
-			string playAgain = Console.ReadLine().ToLower();
-			Console.Write("\n");
-			if (playAgain != "ja")
-			{
-				break;
-			}
-
-		}
-	}
+            // Prompt for another round
+            Console.WriteLine("\nDo you want to play another round? yes/no");
+            string playAgain = Console.ReadLine().ToLower();
+            Console.Write("\n");
+            if (playAgain != "yes")
+            {
+                break;
+            }
+        }
+    }
 }
 
-public class choiceComponent
+/// <summary>
+/// Represents a choice component for the game entities.
+/// </summary>
+public class ChoiceComponent
 {
-
-	public string playerChoice { get; set; }
-
-	//osäker på om denna behövs
-	public string opponentChoice { get; set; }
-
-	//valen som slumpas för motståndaren
-	public string[] choices = { "sten", "sax", "påse" };
+    public string PlayerChoice { get; set; }
+    public string OpponentChoice { get; set; }
+    public string[] Choices = { "rock", "paper", "scissors" };
 }
 
-
+/// <summary>
+/// Represents an entity in the game.
+/// </summary>
 public class Entity
 {
-	public int id { get; }
-	private Dictionary<Type, object> components = new Dictionary<Type, object>();
+    public int Id { get; }
+    private Dictionary<Type, object> components = new Dictionary<Type, object>();
 
-	public Entity(int id)
-	{
-		this.id = id;
-	}
+    public Entity(int id)
+    {
+        this.Id = id;
+    }
 
-	public void addComponent<T>(T component)
-	{
-		components[typeof(T)] = component;
-	}
+    public void AddComponent<T>(T component)
+    {
+        components[typeof(T)] = component;
+    }
 
-	public T getComponent<T>() where T : class
-	{
-		if (components.TryGetValue(typeof(T), out var component))
-		{
-			return component as T;
-		}
-		return null;
-	}
-
+    public T GetComponent<T>() where T : class
+    {
+        if (components.TryGetValue(typeof(T), out var component))
+        {
+            return component as T;
+        }
+        return null;
+    }
 }
 
-public class gameSystem
+/// <summary>
+/// Represents the game system for handling player input.
+/// </summary>
+public class GameSystem
 {
-	public void Input(Entity entity, string input)
-	{
-		var choiceComponent = entity.getComponent<choiceComponent>();
-		if (choiceComponent != null)
-		{
-			//frågar användaren och tar input från användaren
-			Console.WriteLine("välj sten sax eller påse");
-			input = Console.ReadLine().ToLower();
+    public void Input(Entity entity, string input)
+    {
+        var choiceComponent = entity.GetComponent<ChoiceComponent>();
+        if (choiceComponent != null)
+        {
+            // Prompt user and get input
+            Console.WriteLine("Choose rock, paper, or scissors:");
+            input = Console.ReadLine().ToLower();
 
-			//kollar så input är godkänt
-			if (input != "sten" && input != "sax" && input != "påse")
-			{
-				//om det inte är godkänt
-				Console.WriteLine("inte ett godkänt alternativ");
-				choiceComponent.playerChoice = "diskad";
-			}
-			else
-			{
-				//sparar input till playerchoice i choicecomponent
-				choiceComponent.playerChoice = input;
-
-
-			}
-
-		}
-	}
+            // Check if input is valid
+            if (input != "rock" && input != "paper" && input != "scissors")
+            {
+                // If input is not valid
+                Console.WriteLine("Invalid choice");
+                choiceComponent.PlayerChoice = "disqualified";
+            }
+            else
+            {
+                // Save input to player choice in choice component
+                choiceComponent.PlayerChoice = input;
+            }
+        }
+    }
 }
 
+/// <summary>
+/// Represents the winner system for determining the game winner.
+/// </summary>
 public class WinnerSystem
 {
-	//hämtar playerchoihce och opponentChoice från choicecomponent
-	public string getWinner(choiceComponent playerChoice, choiceComponent opponentChoice)
-	{
-		//simpel if för att kolla vem som vann
-		if (playerChoice.playerChoice == opponentChoice.opponentChoice)
-		{
-			return "oavgjort, det var inget kul";
-		}
-		else if ((playerChoice.playerChoice == "sten" && opponentChoice.opponentChoice == "sax") ||
-				 (playerChoice.playerChoice == "sax" && opponentChoice.opponentChoice == "påse") ||
-				 (playerChoice.playerChoice == "påse" && opponentChoice.opponentChoice == "sten"))
-		{
-			return "Vilken tur du har, du vann!";
-		}
-		else
-		{
-			return "japp, du förlorade";
-		}
-	}
+    /// <summary>
+    /// Determines the winner based on player and opponent choices.
+    /// </summary>
+    /// <param name="playerChoice">Player's choice component.</param>
+    /// <param name="opponentChoice">Opponent's choice component.</param>
+    /// <returns>Message indicating the winner.</returns>
+    public string GetWinner(ChoiceComponent playerChoice, ChoiceComponent opponentChoice)
+    {
+        if (playerChoice.PlayerChoice == opponentChoice.OpponentChoice)
+        {
+            return "It's a tie, how boring!";
+        }
+        else if ((playerChoice.PlayerChoice == "rock" && opponentChoice.OpponentChoice == "scissors") ||
+                 (playerChoice.PlayerChoice == "scissors" && opponentChoice.OpponentChoice == "paper") ||
+                 (playerChoice.PlayerChoice == "paper" && opponentChoice.OpponentChoice == "rock"))
+        {
+            return "Congratulations, you won!";
+        }
+        else
+        {
+            return "Sorry, you lost.";
+        }
+    }
 }
-
+```
