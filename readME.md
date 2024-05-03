@@ -76,7 +76,7 @@ Here's an example of how to use the code:
 - Determination of game winner based on choices made by the player and AI opponent.
 
 ## License
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+Distributed under the Unlicense License. See [LICENSE](LICENSE) for more information.
 
 ## Acknowledgments
 - Inspired by the classic game of rock, paper, scissors.
