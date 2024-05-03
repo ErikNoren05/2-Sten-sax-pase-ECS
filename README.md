@@ -17,13 +17,13 @@ Follow these steps to install and run the project locally:
 1. **Clone the Repository**: Clone the project repository to your local machine using the following command:
 
     ```bash
-    git clone https://github.com/ErikNoren05/2-Sten-sax-pase-ECS.git
+    git clone https://github.com/ErikNoren05/rock_papper_scissor_game_ECS.git
     ```
 
 2. **Navigate to Project Directory**: Change directory to the project folder:
 
     ```bash
-    cd 2-Sten-sax-pase-ECS
+    cd rock_papper_scissor_game_ECS
     ```
 
 3. **Compile and Run**: Compile the code using a C# compiler and run the executable. This can typically be done with the `dotnet run` command if you're using .NET Core or by compiling the code into an executable and running it directly.
