@@ -14,7 +14,7 @@ This developer documentation provides insights into the implementation of a Rock
 
 **Flowchart of the Game Loop**
 
-![Flowchart](../assets/flowchart.PNG)
+![Flowchart](../assets/flowshart.PNG)
 
 ## Implementation Overview
 - **Entity Class:** Defines the basic structure of entities and facilitates the addition and retrieval of components.
