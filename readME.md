@@ -12,8 +12,26 @@ This project implements a simple console-based Rock, Paper, Scissors game in C#.
 
 ## Installation
 
-To play the game locally, follow these steps:
-skriv en installationsguide
+Follow these steps to install and run the project locally:
+
+1. **Clone the Repository**: Clone the project repository to your local machine using the following command:
+
+    ```bash
+    git clone https://github.com/ErikNoren05/2-Sten-sax-pase-ECS.git
+    ```
+
+2. **Navigate to Project Directory**: Change directory to the project folder:
+
+    ```bash
+    cd 2-Sten-sax-pase-ECS
+    ```
+
+3. **Compile and Run**: Compile the code using a C# compiler and run the executable. This can typically be done with the `dotnet run` command if you're using .NET Core or by compiling the code into an executable and running it directly.
+
+4. **Play the Game**: Once the program is running, follow the instructions displayed on the console to play the game.
+
+5. **Enjoy!**: Have fun playing the game and experiencing the code in action.
+
 
 
 ## Usage
