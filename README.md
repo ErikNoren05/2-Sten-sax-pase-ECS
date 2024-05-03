@@ -56,11 +56,11 @@ Here's an example of how to use the code:
 // Game Loop begins
 // Player is prompted to choose
 // Example interaction:
-// > välj sten sax eller påse
+// > vÃ¤lj sten sax eller pÃ¥se
 // > sten
 // Output:
 // spelarens val: sten
-// motståndarens val: sax
+// motstÃ¥ndarens val: sax
 // Vilken tur du har, du vann!
 // Vill du spela en runda till? ja/nej
 // Example interaction:
