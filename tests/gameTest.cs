@@ -55,3 +55,4 @@ public class GameTests
 		Assert.AreEqual("spelarens val: diskad", outputLines[6]);
 	}
 }
+
