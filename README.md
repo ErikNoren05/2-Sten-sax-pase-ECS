@@ -8,7 +8,7 @@ This project implements a simple console-based Rock, Paper, Scissors game in C#.
 - [Usage](#usage)
 - [Features](#features)
 - [License](#license)
-- [Acknowledgments](#Acknowledgments)
+- [Acknowledgments](#acknowledgments)
 
 ## Installation
 
@@ -31,8 +31,6 @@ Follow these steps to install and run the project locally:
 4. **Play the Game**: Once the program is running, follow the instructions displayed on the console to play the game.
 
 5. **Enjoy!**: Have fun playing the game and experiencing the code in action.
-
-
 
 ## Usage
 
@@ -68,8 +66,6 @@ Here's an example of how to use the code:
 // Game Loop continues
 ```
 
-
-
 ## Features
 - Player vs. AI gameplay.
 - Simple and intuitive user interface.
@@ -80,3 +76,4 @@ Distributed under the Unlicense License. See [LICENSE](LICENSE) for more informa
 
 ## Acknowledgments
 - Inspired by the classic game of rock, paper, scissors.
+

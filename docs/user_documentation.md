@@ -1,4 +1,4 @@
-### User Documentation for RPS Game
+### User Documentation for Rock-Paper-Scissors Game
 
 #### Introduction
 Welcome to the Rock-Paper-Scissors (RPS) game! This simple yet engaging game allows you to challenge an opponent in a classic showdown of choices.
@@ -27,6 +27,3 @@ If you encounter any issues during gameplay, refer to the troubleshooting sectio
 
 #### Enjoy the Game!
 Thank you for choosing to play the RPS game. Have fun and may the best strategist win!
-
-
-![classdiagram](Flowshart.PNG)
